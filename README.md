@@ -1,92 +1,33 @@
+{{ define "main" }}
+{{- partial "jumbotron.html" . -}}
+<div class="download">
+    {{- with .Site.Params.homeDownload  | markdownify }}
+    <p>{{.}}</p>
+    {{- end }}
+</div>
+<div class="container py-3" id="posts">
+    <div class="row justify-content-center">
+        {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+       {{ range (.Paginate $pages).Pages }}
+        <div class="col-lg-6 col-md-6 pt-2">
+            <div class="card h-100">
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="{{ .RelPermalink }}" class="primary-font card-title">
+                        <h2 class="card-title bg-transparent fw-bold" title="{{ .Title }}">{{ .Title }}</h2>
+                    </a>
+                    <div class="card-text ">
+                        <p>{{ .Summary | truncate 200}}</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start ">{{ .Date.Format "January 2, 2006" }}</span>
+                    <a href="{{ .RelPermalink }}" class="float-end btn btn-outline-indigo btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+</div>
+<br>
+{{- partial "paginator.html" . -}}
 
-## kembang
-
-![kembang](https://raw.githubusercontent.com/httpsecure/kembang/main/images/screenshot.png)
-
-
-I made this theme for learning purpose so maybe not perfect. gggggggg
-
-why this theme name kembang ? kembang = flowers.
-
-## Demo
-
-**Credit :**
-
- * Some text on demo site from wikipedia
- * Flowers images from unsplash
- * SVG icon bootstrap.
- 
- [Demo Site](https://kembang-theme.netlify.app/)
-
-## Features
-
-* Fully responsive
-* Bootstrap CSS only
-* About, Tags, and List pages
-* Easy to customize
-* Lighthouse score 100%
-* Local font jost
-* Mozilla Observatory A+ click this [link](https://observatory.mozilla.org/analyze/kembang-theme.netlify.app)
-
-This theme using bootstrap 5.2
-
-Using BS for local development
-
-```
-custom_css = [ "/css/main.css", "/css/normalize.css", "/css/bootstrap.css"]
-```
-For production You can use CDN and delete this line parameters
-```
-"/css/bootstrap.css"
-```
-and add this inside **head.html**
-```
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-```
-
-## Code highlighting
-
-By default hugo using chroma to color your code syntax. All you need to do is to wrap you code like this:
-
-<pre>
-``` css
- your code here
-```
-</pre>
-For style prefered you can try this :
-
-[https://swapoff.org/chroma/playground/](https://swapoff.org/chroma/playground/)
-
-For this theme using solarized-dark256
-
-## Favicon
-
-You can use favicon generator & put the favicon file inside **static** folder
-
-## Installation
-
-You can download the theme manually, extract & copy the examplesite go to themes directory
-or
-
-Navigate to the root directory of your Hugo site and clone this repository.
-``` 
-git clone https://github.com/httpsecure/kembang.git themes/kembang
-```
-Refer to the [Hugo docs](https://gohugo.io/getting-started/quick-start/) for more information.
-
-## Note
-
-If you manualy install hugo, you must install hugo extended version
-
-If you using debian/ubuntu & install hugo from repo it will include **libsass1**
-
-## Discussions
-
-[Discussions](https://github.com/httpsecure/kembang/discussions)
-
-## License
-
-This theme released under the [MIT License](https://github.com/httpsecure/kembang/blob/main/LICENSE) same as bootstrap.
-
-
+{{ end }}
