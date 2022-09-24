@@ -3,7 +3,7 @@
 ![kembang](https://raw.githubusercontent.com/httpsecure/gambar-blog/main/images/screenshot.png)
 
 
-I made this theme for learning purpose so maybe not perfect.
+I made this theme for learning purpose so maybe not perfect. tes 123456789
 
 why this theme name kembang ? kembang = flowers.
 
